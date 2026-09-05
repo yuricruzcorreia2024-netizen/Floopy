@@ -1,3 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assistir — Floppy</title><link rel="stylesheet" href="css/style.css"></head>
-<body class="player-body"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>Floppy</span></a><nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a></nav></header><main class="player-page"><div class="player-layout"><section><div class="video-wrap" id="videoWrap"><video id="video" controls playsinline></video><div class="video-message" id="videoMessage"></div></div><div class="watch-info" id="watchInfo"></div></section><aside class="episodes" id="episodes"></aside></div></main><script src="js/config.js"></script><script src="js/app.js"></script><script src="js/player.js"></script></body></html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assistir — Floppy</title><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/player.css">
+</head>
+<body class="player-body"><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">F</span><span>Floppy</span></a><nav><a href="index.html">Início</a><a href="catalogo.html">Catálogo</a></nav></header><main class="player-page"><div class="player-layout"><section><div class="video-wrap" id="videoWrap"><video id="video" controls playsinline></video><div class="video-message" id="videoMessage"></div></div><div class="watch-info" id="watchInfo"></div></section><aside class="episodes" id="episodes"></aside></div></main><script src="js/config.js"></script><script src="js/app.js"></script><script src="js/player.js"></script>
+<main class="player-page">
+  <section class="player-wrap">
+    <div class="video-box">
+      <video id="videoPlayer" controls playsinline preload="metadata"></video>
+      <iframe id="embedPlayer" hidden allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="player-info">
+      <h1 id="playerTitle">Carregando...</h1>
+      <div id="playerStatus" class="player-status">Preparando player...</div>
+      <div class="episode-nav">
+        <button id="prevEpisode" type="button">← Anterior</button>
+        <button id="nextEpisode" type="button">Próximo →</button>
+      </div>
+      <h2>Servidores</h2>
+      <div id="servers" class="servers"></div>
+    </div>
+  </section>
+</main>
+
+</body></html>

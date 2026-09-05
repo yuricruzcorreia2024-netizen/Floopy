@@ -1,24 +1,41 @@
 # Floppy
-Frontend de streaming em HTML, CSS e JavaScript puro, pronto para GitHub Pages.
 
-## 1. Configurar a API
-Abra `js/config.js` e troque:
+Frontend de streaming em HTML/CSS/JS para GitHub Pages, integrado à SugoiAPI.
 
-`https://SUA-API-AQUI.com`
+## 1. Rodar a SugoiAPI localmente
 
-pela URL pública da sua SugoiAPI.
+```bash
+git clone https://github.com/yzPeedro/SugoiAPI.git sugoiapi
+cd sugoiapi
+docker compose up -d
+```
 
-A integração usa o endpoint:
+A API fica em:
 
-`GET /episode/{slug}/{season}/{episodeNumber}`
+`http://localhost:1010`
 
-## 2. Catálogo
-O arquivo `data/catalog.json` controla o catálogo visual. Cada item possui `id`, `title`, `slug`, `year`, `status`, `genres`, `episodes`, `cover`, `banner` e `description`.
+## 2. Configurar o Floppy
 
-O `slug` precisa ser compatível com o slug esperado pela SugoiAPI.
+Edite `js/config.js`:
 
-## 3. GitHub Pages
-Envie toda a pasta para um repositório e ative GitHub Pages usando a branch principal e a pasta raiz.
+```js
+window.FLOPPY_CONFIG = {
+  API_URL: "http://localhost:1010"
+};
+```
 
-## Observação sobre CORS
-O navegador precisa conseguir acessar a API diretamente. Se a SugoiAPI não enviar `Access-Control-Allow-Origin`, o GitHub Pages não conseguirá fazer a requisição. Nesse caso, configure CORS na API.
+## 3. Testar
+
+Abra o Floppy no mesmo computador da SugoiAPI e use uma URL como:
+
+`player.html?id=naruto&season=1&episode=1`
+
+O player interpreta a resposta da API no formato:
+
+`data[].episodes[].episode`
+
+e cria botões para os providers disponíveis.
+
+### Importante para GitHub Pages
+
+`localhost` só funciona no computador que está executando a SugoiAPI. Para visitantes do GitHub Pages, publique a SugoiAPI em um servidor HTTPS e coloque essa URL em `js/config.js`.
